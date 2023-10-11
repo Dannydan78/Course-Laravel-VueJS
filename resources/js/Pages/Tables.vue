@@ -4,17 +4,15 @@
             <h1>Tables</h1>
         </template>
         <EasyDataTable
+         buttons-pagination
+         show-index
          :headers="headers"
-         :items="items" />
-
+         :items="items"
+         alternating
+         />
+        
     </app-layout>
 </template>
-
-
-
-
-
-
 
 <script lang="ts" setup>
 
@@ -40,3 +38,4 @@
     { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
   ];
 </script>
+
