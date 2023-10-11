@@ -27,6 +27,13 @@ Route::get('/', function () {
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
+
+Route::get('/tables', function (){
+    return Inertia::render('Tables');
+})->name('tables.index');
+
+// Route::get('/course/{id}', [CourseController::class, 'index'])->name('courses.show');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -35,4 +42,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::get('/course/{id}', [CourseController::class, 'show'])->name('courses.show');
 });
+
+
+

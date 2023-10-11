@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Episode;
+use App\Models\Book;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-
+       User::factory(10)->create();
        Course::factory(15)->create();
        Episode::factory(150)->create();
+       Book::factory(150)->create();
     }
 }

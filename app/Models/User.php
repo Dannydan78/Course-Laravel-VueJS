@@ -7,6 +7,7 @@ namespace App\Models;
 
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -65,5 +66,10 @@ class User extends Authenticatable
 
     public function courses() {
         return $this->hasMany(Course::class);
+    }
+
+    public function books(): HasMany
+    {
+        return $this->hasMany(Book::class);
     }
 }

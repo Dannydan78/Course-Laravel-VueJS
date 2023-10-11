@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
@@ -65,4 +66,6 @@ class UserFactory extends Factory
             'ownedTeams'
         );
     }
+
+ 
 }

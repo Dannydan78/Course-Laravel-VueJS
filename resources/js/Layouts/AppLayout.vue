@@ -8,6 +8,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
+
 defineProps({
     title: String,
 });
@@ -54,6 +55,10 @@ const logout = () => {
 
                                 <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
                                     Les formations
+                                </NavLink>
+
+                                <NavLink :href="route('tables.index')" :active="route().current('tables.index')">
+                                    Tables
                                 </NavLink>
 
                             </div>
@@ -285,10 +290,14 @@ const logout = () => {
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
+
+
             </header>
 
             <!-- Page Content -->
             <main>
+                <EasyDataTable :headers="headers" :items="items" />
+
                 <slot />
             </main>
         </div>

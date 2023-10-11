@@ -8,21 +8,21 @@
       <div class="py-3" v-for="course in courseList" :key="course.id">
         <!-- Utilisation d'une boucle pour afficher chaque cours -->
         <div class="mx-8 bg-white rounded shadow p-4">
-          <div class="text-sm text-gray-500">{{ course.user.name }}</div>
+          <div class="text-sm text-gray-500">Mise en ligne par {{ course.user.name }}</div>
           <div class="flex justify-between items-center">
             <div class="text-4xl">{{ course.title }}</div>
             <!-- Affichage du titre du cours -->
             <div class="text-sm text-gray-400">{{ course.episodes_count }} episodes</div>
           </div>
           <div class="text-sm text-gray-500">{{ course.description }}</div>
-          <a href="" class="bg-indigo-500 text-white px-2 py-1 text-sm mt-3 inline-block rounded hover:bg-indigo-700">Voir la formation</a>
+          <a href="'course/' + course.id" class="bg-indigo-500 text-white px-2 py-1 text-sm mt-3 inline-block rounded hover:bg-indigo-700">Voir la formation</a>
         </div>
       </div>
     </app-layout>
   </template>
 
 <script setup>
-// Importation des fonctionnalités nécessaires de Vue.js
+// Importation des fonctions déclarées Vue.js
 import { ref, defineProps, onMounted } from 'vue';
 
 // Importation du composant "AppLayout"
