@@ -54,11 +54,11 @@ const logout = () => {
                                 </NavLink>
 
                                 <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
-                                    Les formations
+                                    Nos formations
                                 </NavLink>
 
                                 <NavLink :href="route('tables.index')" :active="route().current('tables.index')">
-                                    Tables
+                                    Utilisateurs
                                 </NavLink>
 
                             </div>

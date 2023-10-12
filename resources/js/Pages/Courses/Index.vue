@@ -3,7 +3,7 @@
       <!-- Utilisation d'un composant de mise en page appelé "app-layout" -->
       <template #header>
         <!-- Utilisation d'un "slot" nommé "header" pour afficher le titre -->
-        <h1>Liste des formations</h1>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Formations</h2>
       </template>
       <div class="py-3" v-for="course in courseList" :key="course.id">
         <!-- Utilisation d'une boucle pour afficher chaque cours -->
@@ -15,7 +15,7 @@
             <div class="text-sm text-gray-400">{{ course.episodes_count }} episodes</div>
           </div>
           <div class="text-sm text-gray-500">{{ course.description }}</div>
-          <a href="'course/' + course.id" class="bg-indigo-500 text-white px-2 py-1 text-sm mt-3 inline-block rounded hover:bg-indigo-700">Voir la formation</a>
+          <a href="{{ route('courses.show', ['id' => $course->id]) }}" class="bg-indigo-500 text-white px-2 py-1 text-sm mt-3 inline-block rounded hover:bg-indigo-700">Voir la formation</a>
         </div>
       </div>
     </app-layout>
@@ -30,6 +30,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 
 // Déclaration des props attendues par ce composant
 const props = defineProps(['courses']);
+
 
 // Création d'une référence pour stocker la liste des cours
 const courseList = ref([]);

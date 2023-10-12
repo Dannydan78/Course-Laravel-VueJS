@@ -1,41 +1,49 @@
 <template>
     <app-layout>
         <template #header>
-            <h1>Tables</h1>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Utilisateurs</h2>
         </template>
         <EasyDataTable
-         buttons-pagination
-         show-index
-         :headers="headers"
-         :items="items"
-         alternating
-         />
-        
+            v-model:items-selected="itemsSelected"
+            buttons-pagination
+            show-index
+            :headers="headers"
+            :items="users"
+            alternating
+        />
+
     </app-layout>
 </template>
+
 
 <script lang="ts" setup>
 
     import AppLayout from '@/Layouts/AppLayout.vue';
-    import type { Header, Item } from "vue3-easy-data-table";
+    import type { Header, Item} from "vue3-easy-data-table";
     import EasyDataTable from 'vue3-easy-data-table'; // Import du composant
+    import { defineProps } from 'vue';
+    import { ref } from 'vue';
 
-  const headers: Header[] = [
-    { text: "PLAYER", value: "player" },
-    { text: "TEAM", value: "team"},
-    { text: "NUMBER", value: "number"},
-    { text: "POSITION", value: "position"},
-    { text: "HEIGHT", value: "indicator.height"},
-    { text: "WEIGHT (lbs)", value: "indicator.weight", sortable: true},
-    { text: "LAST ATTENDED", value: "lastAttended", width: 200},
-    { text: "COUNTRY", value: "country"},
-  ];
+    const itemsSelected = ref<Item[]>([]);
+    const props = defineProps( ['users']);
 
-  const items: Item[] = [
-    { player: "Stephen Curry", team: "GSW", number: 30, position: 'G', indicator: {"height": '6-2', "weight": 185}, lastAttended: "Davidson", country: "USA"},
-    { player: "Lebron James", team: "LAL", number: 6, position: 'F', indicator: {"height": '6-9', "weight": 250}, lastAttended: "St. Vincent-St. Mary HS (OH)", country: "USA"},
-    { player: "Kevin Durant", team: "BKN", number: 7, position: 'F', indicator: {"height": '6-10', "weight": 240}, lastAttended: "Texas-Austin", country: "USA"},
-    { player: "Giannis Antetokounmpo", team: "MIL", number: 34, position: 'F', indicator: {"height": '6-11', "weight": 242}, lastAttended: "Filathlitikos", country: "Greece"},
-  ];
+    console.log(props);
+
+
+
+
+    const headers: Header[] = [
+        { text: "Nom", value: "name" },
+        { text: "Email", value: "email"},
+
+    ];
+
+
+
+
+
+
 </script>
+
+
 

@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\CourseController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TablesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,12 @@ Route::get('/', function () {
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
 
-Route::get('/tables', function (){
-    return Inertia::render('Tables');
-})->name('tables.index');
+Route::get('/tables', [TablesController::class, 'index'])->name('tables.index');
+
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+
 
 // Route::get('/course/{id}', [CourseController::class, 'index'])->name('courses.show');
 
@@ -45,6 +50,3 @@ Route::middleware([
 
     Route::get('/course/{id}', [CourseController::class, 'show'])->name('courses.show');
 });
-
-
-
