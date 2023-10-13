@@ -20,4 +20,9 @@ class TablesController extends Controller
             'users' => $users,
         ]);
     }
+
+    public function destroy(int $id)
+    {
+        
+    }
 }
