@@ -1,28 +1,32 @@
-<script lang="ts" setup>
-
-    import AppLayout from '@/Layouts/AppLayout.vue';
-    import type { Header } from "vue3-easy-data-table";
-    import EasyDataTable from 'vue3-easy-data-table'; // Import du composant
-    import { defineProps } from 'vue';
-    import { ref } from 'vue';
+<script setup lang="ts">
+  import AppLayout from '@/Layouts/AppLayout.vue';
+  import type { Header } from "vue3-easy-data-table";
+  import EasyDataTable from 'vue3-easy-data-table';
+  import { defineProps, ref, watch } from 'vue';
 
 
-    const itemsSelected = ref([]);
-    const props = defineProps( ['users']);
-    // console.log(props);
-    const searchField = ref("");
-    const searchValue = ref("");
+  const itemsSelected = ref([]);
+  const props = defineProps(['users']);
+  const searchField = ref(localStorage.getItem('searchField') || 'name');
+  const searchValue = ref(localStorage.getItem('searchValue') || '');
 
-    const headers: Header[] = [
-        { text: "Name", value: "name" },
-        { text: "Email", value: "email"},
-        { text: "Actions", value:"actions"},
+  watch(searchField, (newSearchField) => {
+    localStorage.setItem('searchField', newSearchField);
+  });
 
-    ];
+  watch(searchValue, (newSearchValue) => {
+    localStorage.setItem('searchValue', newSearchValue);
+  });
 
-
-
+  const headers: Header[] = [
+    { text: "Name", value: "name" },
+    { text: "Email", value: "email" },
+    { text: "Actions", value: "actions" },
+  ];
 </script>
+
+
+
 
 
 
@@ -32,7 +36,7 @@
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Utilisateurs</h2>
         </template>
-        <span>Champ : </span>
+        <span class="ms-2">Champ : </span>
         <select v-model="searchField" class="mb-2 py-2 mt-2 border rounded-md focus:ring focus:ring-indigo-300 text-gray-700">
             <option>name</option>
             <option>email</option>
@@ -40,13 +44,19 @@
 
         <br/>
 
-        <span>Recherche :</span>
-        <input type="text" v-model="searchValue" class="ms-2 mb-4 shadow appearance-none border rounded py-2 px-3 text-gray-700 focus:ring-indigo-300 leading-tight focus:outline-none focus:shadow-outline placeholder:italic placeholder:text-gray-400" placeholder="Tapez votre recherche...">
+        <span class="ms-2">Recherche :</span>
+        <input type="text" v-model="searchValue" class="ms-2 mb-4 shadow appearance-none border rounded py-2 px-3 text-gray-700 focus:ring-indigo-300 leading-tight focus:outline-none focus:shadow-outline placeholder:italic placeholder:text-gray-400" placeholder="Tapez votre recherche ici...">
                 <EasyDataTable
                     v-model:items-selected="itemsSelected"
                     buttons-pagination
                     show-index
-                    :headers="headers"
+
+
+
+
+
+
+                              :headers="headers"
                     :items="users"
                     alternating
                     :search-field="searchField"
