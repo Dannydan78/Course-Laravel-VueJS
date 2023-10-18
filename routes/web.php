@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TablesController;
+use App\Http\Controllers\TodoListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::get('/tables', [TablesController::class, 'index'])->name('tables.index');
 
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+Route::get('/todo', [TodoListController::class, 'index'])->name('todo.index');
 
 
 

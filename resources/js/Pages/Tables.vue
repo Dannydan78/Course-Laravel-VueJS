@@ -7,16 +7,17 @@
 
   const itemsSelected = ref([]);
   const props = defineProps(['users']);
-  const searchField = ref(localStorage.getItem('searchField') || 'name');
-  const searchValue = ref(localStorage.getItem('searchValue') || '');
+  const searchField = ref(); // localStorage.getItem('searchField') || ''); ===> pour set la recherche au rechargement de la page
+  const searchValue = ref(); // localStorage.getItem('searchValue') || '');
 
-  watch(searchField, (newSearchField) => {
-    localStorage.setItem('searchField', newSearchField);
-  });
+  
+//   watch(searchField, (newSearchField) => {
+//     localStorage.setItem('searchField', newSearchField);
+//   });
 
-  watch(searchValue, (newSearchValue) => {
-    localStorage.setItem('searchValue', newSearchValue);
-  });
+//   watch(searchValue, (newSearchValue) => {
+//     localStorage.setItem('searchValue', newSearchValue);
+//   });
 
   const headers: Header[] = [
     { text: "Name", value: "name" },
@@ -26,11 +27,6 @@
 </script>
 
 
-
-
-
-
-
 <template>
     <app-layout>
         <template #header>
@@ -38,6 +34,7 @@
         </template>
         <span class="ms-2">Champ : </span>
         <select v-model="searchField" class="mb-2 py-2 mt-2 border rounded-md focus:ring focus:ring-indigo-300 text-gray-700">
+            <option></option>
             <option>name</option>
             <option>email</option>
         </select>
@@ -50,13 +47,7 @@
                     v-model:items-selected="itemsSelected"
                     buttons-pagination
                     show-index
-
-
-
-
-
-
-                              :headers="headers"
+                    :headers="headers"
                     :items="users"
                     alternating
                     :search-field="searchField"
@@ -96,6 +87,13 @@
 
 }
 </style>
+
+
+
+
+
+
+
 
 
 
