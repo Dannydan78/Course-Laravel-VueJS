@@ -19,6 +19,8 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "@heroicons/vue": "^2.0.18",
+        "@vue-hero-icons/outline": "^1.7.2",
         "vue3-easy-data-table": "^1.5.47"
     }
 }
