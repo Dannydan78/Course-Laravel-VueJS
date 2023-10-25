@@ -10,7 +10,7 @@
   const searchField = ref(); // localStorage.getItem('searchField') || ''); ===> pour set la recherche au rechargement de la page
   const searchValue = ref(); // localStorage.getItem('searchValue') || '');
 
-  
+
 //   watch(searchField, (newSearchField) => {
 //     localStorage.setItem('searchField', newSearchField);
 //   });
